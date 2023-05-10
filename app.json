@@ -1,0 +1,44 @@
+{
+  "expo": {
+    "name": "Praias Rio",
+    "slug": "beachesinrio",
+    "version": "1.0.1",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.oliveirafocs.beachesinrio",
+      "versionCode": 1
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-build-properties"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "8f485843-7821-4d37-a052-dc161c91fe73"
+      }
+    },
+    "owner": "oliveirafocs"
+  },
+  "react-native-google-mobile-ads": {
+    "android_app_id": ""
+  }
+}
