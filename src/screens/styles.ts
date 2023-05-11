@@ -2,11 +2,11 @@ import { StyleSheet } from 'react-native'
 
 
 export const styles = StyleSheet.create({
-  container: {
+  CONTAINER: {
     flex: 1,
   },
 
-  viewButton: {
+  VIEW_BUTTON: {
     flexDirection: 'row', 
     height: 60, width: '100%', 
     alignItems: 'center', justifyContent: 'center',
@@ -14,7 +14,16 @@ export const styles = StyleSheet.create({
     elevation: 30, shadowColor: '#000', borderWidth: 1
   },
 
-  webView: {
+  VIEW_INPUT: {
+    height: 110, width: '100%', 
+    alignSelf: 'center', justifyContent: 'center' , 
+    backgroundColor: '#fff', 
+    position: 'absolute',
+    zIndex: 1,
+    top: 60,
+  },
+
+  WEB_VIEW: {
    flex: 1,
    backgroundColor: '#fff',
   },
