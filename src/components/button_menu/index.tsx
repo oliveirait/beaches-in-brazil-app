@@ -9,8 +9,15 @@ export const menuList = [
 ]
 
 export function MenuButton ( props: any ) {
+  const { setUrl, setSearch } = props.setState
+
+  function handleChangePage () {
+    setUrl(props.url)
+    setSearch('')
+  }
+
   return (
-    <TouchableOpacity onPress={() => props.press(props.url)} style={styles.button}> 
+    <TouchableOpacity onPress={handleChangePage} style={styles.button}> 
       <Text style={styles.buttonText}>
         {props.title}
       </Text>

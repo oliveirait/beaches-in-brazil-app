@@ -5,6 +5,8 @@ import { Banner } from '../components/banner_pub_id';
 import { MenuButton, menuList } from '../components/button_menu';
 import { styles } from './styles';
 import * as Icon from '@expo/vector-icons'
+import { ActivityLoad } from '../components/activity_loading';
+import { MaterialIcons } from 'expo-vector-icons';
 
 
 
@@ -20,6 +22,18 @@ export default function Home({navigation}: any) {
     }
   }
 
+  function RenderError () {
+    let stringError = `Falha de conexão! \nVerifique sua conexão com a internet`
+    return (
+      <View style={{position: 'absolute', bottom: 0, right: 0, left: 0, top: 0, justifyContent: 'center', marginBottom: 100}} >
+        <MaterialIcons name="error" size={80} color="red" style={{ alignSelf:'center', alignItems: 'center', justifyContent: 'center'}}/>
+        <Text style={{fontFamily: 'Roboto-Bold', textAlign: 'center', fontSize: 14, marginTop: 10}} >
+         {stringError}
+        </Text>
+      </View>
+    )
+  }
+
   return (
     <View style={styles.CONTAINER}>
       <StatusBar barStyle='default' />
@@ -27,7 +41,7 @@ export default function Home({navigation}: any) {
       <View style={styles.VIEW_BUTTON}>
         {
           menuList.map(list => 
-            <MenuButton  key={list.site} title={list.city} url={list.site} press={setUrl} />
+            <MenuButton  key={list.site} title={list.city} url={list.site} setState={{setUrl, setSearch}} />
           )
         }
       </View>
@@ -60,6 +74,8 @@ export default function Home({navigation}: any) {
         useWebView2
         injectedJavaScript={url}
         ref={webViewRef}
+        renderLoading={ ActivityLoad }
+        renderError={ RenderError }
         //onMessage={e => Alert.alert(e.nativeEvent.data)}
       />
 
