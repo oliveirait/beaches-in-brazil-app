@@ -2,10 +2,25 @@
   "expo": {
     "name": "Praias Limpas Brasil",
     "slug": "beachesinrio",
-    "version": "1.0.2",
+    "version": "1.0.4",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./src/assets/icon.png",
     "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./src/assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "useFrameworks": "static"
+          }
+        }
+      ]
+    ],
     "assetBundlePatterns": [
       "**/*"
     ],
@@ -14,18 +29,15 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./src/assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.oliveirafocs.beachesinrio",
-      "versionCode": 2
+      "versionCode": 4
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./src/assets/favicon.png"
     },
-    "plugins": [
-      "expo-build-properties"
-    ],
     "extra": {
       "eas": {
         "projectId": "8f485843-7821-4d37-a052-dc161c91fe73"
@@ -33,7 +45,8 @@
     },
     "owner": "oliveirafocs"
   },
+
   "react-native-google-mobile-ads": {
-    "android_app_id": "ca-app-pub-2213444535919704/6234339818"
+    "android_app_id": "ca-app-pub-2213444535919704~5707726205"
   }
 }

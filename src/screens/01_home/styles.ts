@@ -23,6 +23,25 @@ export const styles = StyleSheet.create({
     top: 60,
   },
 
+  WRAP_INPUT_AND_BUTTON: {
+    flexDirection: 'row', alignSelf: 'center', justifyContent: 'space-between',
+    backgroundColor: '#e2e2e2', 
+    width: '92%',  
+    borderRadius: 10
+  },
+
+  TEXT_INPUT: {
+    height: 60, width: '85%',
+    backgroundColor: '#e2e2e2', borderRadius: 10, alignSelf: 'center',
+    paddingHorizontal: 10,
+    fontSize: 20
+  },
+
+  BUTTON_SEARCH: {
+    padding: 10, 
+    borderTopRightRadius: 10, borderBottomRightRadius: 10
+  },
+
   WEB_VIEW: {
    flex: 1,
    backgroundColor: '#fff',

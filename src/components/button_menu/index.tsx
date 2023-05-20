@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
 
@@ -31,7 +32,7 @@ const styles = StyleSheet.create({
     alignItems: 'center', justifyContent: 'center', 
     flex: 1,
     backgroundColor: '#f6f6f6'
-  ,},
+  },
 
   buttonText: {
     fontSize: 12

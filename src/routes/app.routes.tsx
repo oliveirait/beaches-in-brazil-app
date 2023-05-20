@@ -1,13 +1,23 @@
-import { createStackNavigator } from "@react-navigation/stack";
-import Home from "../screens/";
+import Home from "../screens/01_home";
 
-const { Navigator, Screen } = createStackNavigator() 
+import { Navigator, Screen } from './stack';
 
+import { Banner } from "../components/banner_pub_id";
 
 export function AppRoutes () {
   return (
+  <>
     <Navigator>
-      <Screen name='home' component={Home} options={{headerShown: false}}/>
+      <Screen 
+        name='home' 
+        component={Home} 
+        options={{ headerShown: false }} 
+      />
     </Navigator>
+
+    {
+      !__DEV__ && <Banner />
+    }
+  </>
   )
 }
