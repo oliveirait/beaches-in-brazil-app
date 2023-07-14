@@ -20,14 +20,4 @@ export function Banner () {
   )
 }
 
-export function Banner2 () {
-
-  return (
-    <View style={{alignSelf: 'center'}}>
-
-    </View>
-  )
-}
-
-
 
