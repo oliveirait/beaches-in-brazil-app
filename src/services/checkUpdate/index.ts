@@ -37,7 +37,9 @@ async function checkVersion () {
   }
 }
 
-export const Update = checkVersion
+export const Update = {
+  checkVersion: checkVersion
+}
 
 
 

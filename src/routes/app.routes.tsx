@@ -1,19 +1,30 @@
-import Home from "../screens/01_home";
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import { Navigator, Screen } from './stack';
-
+import { Home } from "../screens/02_home";
+import { Main } from '../screens/01_main';
 import { Banner } from "../components/banner_pub_id";
 
-export function AppRoutes () {
+
+const Tab = createMaterialTopTabNavigator();
+const Stack = createStackNavigator()
+
+
+export const AppRoutes = () => {
   return (
   <>
-    <Navigator>
-      <Screen 
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen 
+        name='main' 
+        component={Main} 
+      />
+
+      <Stack.Screen 
         name='home' 
         component={Home} 
-        options={{ headerShown: false }} 
       />
-    </Navigator>
+
+    </Stack.Navigator>
 
     {
       !__DEV__ && <Banner />

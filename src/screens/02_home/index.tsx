@@ -4,12 +4,12 @@ import { WebView, WebViewMessageEvent } from 'react-native-webview';
 import { MenuButton, menuList } from '../../components/button_menu';
 import { styles } from './styles';
 import * as Icon from '@expo/vector-icons'
-import { WebViewRender } from '../../components/web_view_render';
+import { ActivityLoad, RenderError } from '../../components/web_view_components';
 
 
-export default function Home () {
+export const Home = ({route}) => {
 
-  const [url, setUrl] = React.useState('https://praialimpa.net')
+  const [url, setUrl] = React.useState(route.params?.site)
   const [search, setSearch] = React.useState('')
 
   const webViewRef = React.useRef(null)
@@ -22,9 +22,13 @@ export default function Home () {
     } 
   }
 
+  React.useEffect(() => {
+    console.log(url)
+  })
+
   return (
     <View style={styles.CONTAINER}>
-      <StatusBar barStyle='default' />
+      <StatusBar barStyle="dark-content" backgroundColor='#fff'/>
     
       <View style={styles.VIEW_BUTTON}>
         {
@@ -58,11 +62,11 @@ export default function Home () {
       
       <WebView
         source={{uri: url}}
-        useWebView2
         injectedJavaScript={url}
         ref={webViewRef}
-        renderLoading={ WebViewRender.ActivityLoad }
-        renderError={ WebViewRender.RenderError }
+        renderLoading={ ActivityLoad }
+        renderError={ RenderError }
+        
       />
 
     </View>
