@@ -1,8 +1,6 @@
-import { useState } from "react";
-import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
 
-export const menuList = [
+export const base = [
   {
     city: 'Rio de Janeiro', 
     site: 'https://praialimpa.net', 
@@ -29,32 +27,3 @@ export const menuList = [
   }
 ]
 
-export function MenuButton ( props: any ) {
-  const { setUrl, setSearch } = props.setState
-
-  function handleChangePage () {
-    setUrl(props.url)
-    setSearch('')
-  }
-
-  return (
-    <TouchableOpacity onPress={handleChangePage} style={styles.button}> 
-      <Text style={styles.buttonText}>
-        {props.title}
-      </Text>
-    </TouchableOpacity>
-  )
-}
-
-const styles = StyleSheet.create({
-  button: {
-    width: '50%', height: '100%',
-    alignItems: 'center', justifyContent: 'center', 
-    flex: 1,
-    backgroundColor: '#f6f6f6'
-  },
-
-  buttonText: {
-    fontSize: 12
-  },
-})

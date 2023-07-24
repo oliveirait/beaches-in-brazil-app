@@ -8,37 +8,38 @@ export const styles = StyleSheet.create({
 
   VIEW_BUTTON: {
     flexDirection: 'row', 
-    height: 60, width: '100%', 
+    height: 50, width: '100%', 
     alignItems: 'center', justifyContent: 'center',
     textAlign: 'center',
     elevation: 30, shadowColor: '#000', borderWidth: 1
   },
 
   VIEW_INPUT: {
-    height: 110, width: '100%', 
+    height: 100, width: '100%', 
     alignSelf: 'center', justifyContent: 'center' , 
     backgroundColor: '#fff', 
     position: 'absolute',
     zIndex: 1,
-    top: 60,
+    
   },
 
   WRAP_INPUT_AND_BUTTON: {
     flexDirection: 'row', alignSelf: 'center', justifyContent: 'space-between',
     backgroundColor: '#e2e2e2', 
-    width: '92%',  
-    borderRadius: 10
+    width: '90%',  
+    borderRadius: 10,
+    elevation: 5, shadowColor: '#000', borderWidth: 1
   },
 
   TEXT_INPUT: {
-    height: 60, width: '85%',
+    height: 50, width: '85%',
     backgroundColor: '#e2e2e2', borderRadius: 10, alignSelf: 'center',
     paddingHorizontal: 10,
-    fontSize: 20
+    fontSize: 15
   },
 
   BUTTON_SEARCH: {
-    padding: 10, 
+    padding: 0, 
     borderTopRightRadius: 10, borderBottomRightRadius: 10
   },
 

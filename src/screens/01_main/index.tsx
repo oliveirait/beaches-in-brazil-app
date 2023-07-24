@@ -1,8 +1,9 @@
-import { useNavigation } from "@react-navigation/native"
-import { View, Text, Button, StatusBar, FlatList, ListRenderItemInfo, TouchableOpacity, Image } from "react-native"
-import { menuList } from "../../components/button_menu"
-import { useState } from "react"
+import { useFocusEffect, useNavigation } from "@react-navigation/native"
+import { View, Text, StatusBar, FlatList, ListRenderItemInfo, TouchableOpacity, Image, ActivityIndicator } from "react-native"
+import { useCallback, useEffect, useState } from "react"
 
+import { styles } from "./styles"
+import { base } from "../../base"
 
 interface MenuListProps {
   city: string
@@ -13,34 +14,39 @@ interface MenuListProps {
 
 
 export const Main = () => {
-
   const navigation = useNavigation()
+  const [list, setList] = useState<MenuListProps[]>([])
 
-  const [list] = useState(menuList)
 
-  function handleNextPage (item: string) {
-    navigation.navigate('home', { site: item })
-  }
-  
-  function handleGoBack () {
-    navigation.goBack()
-  }
+  useFocusEffect(
+    useCallback(() => {
+      setList(base)
+    }, [])
+  )
   
   const ListCity = ({item}: ListRenderItemInfo<MenuListProps> ) => {
+    const url = item?.picture
+
     return (
       <TouchableOpacity 
-        style={{ flex: 1, backgroundColor: '#fff', justifyContent: 'center', alignItems: 'flex-start', marginBottom: 30, borderRadius: 10, opacity: 20}}
-        onPress={() => handleNextPage(item.site)}
+        style={styles.TOUCHABLE_CARD}
+        onPress={
+          () => navigation.navigate('home', { site: item?.site })
+        }
       >
         
-        <View style={{width: '100%', height: 200, elevation: 20, shadowColor: '#000'}} >
-          <Image source={{uri: item?.picture}} 
-            style={{flex: 1, borderRadius: 10, marginBottom: 10, width: '100%'}}
-            resizeMode="contain"
-          />
+        <View style={styles.VIEW_IMAGE} >
+          { url ? 
+            <Image source={{uri: url}} 
+              style={{flex: 1, borderRadius: 10, marginBottom: 10, width: '100%'}}
+              resizeMode="cover"
+            />
+            : <ActivityIndicator size={24} color={'#0e0088'} />
+          }
+
         </View>
   
-        <Text style={{fontSize: 25, fontWeight: 'bold'}}>{item?.city}</Text>
+        <Text style={styles.TITLE}>{item?.city}</Text>
         <Text>{item?.description}</Text>
   
       </TouchableOpacity>
@@ -49,21 +55,26 @@ export const Main = () => {
 
 
   return (
-    <View style={{flex: 1, backgroundColor: '#fff'}}>
-      <StatusBar barStyle="dark-content" backgroundColor='#fff'/>
+    list.length > 0 ? 
+      <View style={styles.CONTAINER}>
+        <StatusBar barStyle="dark-content" backgroundColor='#f2f2f2'/>
 
-        <View style={{justifyContent: 'center', alignItems: 'center', backgroundColor: '#fff', width: '100%', height: 80}}>
-          <Text style={{alignItems: 'center', textAlign: 'left', fontSize: 28, fontWeight: 'bold'}}>Escolha a cidade</Text>
-        </View>
-     
-        <FlatList 
-          showsVerticalScrollIndicator={false}
-          data={list}
-          keyExtractor={item => item?.city}
-          renderItem={ ListCity }
-          style={{alignSelf: 'center', width: '90%', marginBottom: 20, borderRadius: 10}}
-        />
-    
-    </View>
+          <View style={styles.VIEW_HEADER}>
+            <Text style={styles.TITLE_HEADER}> Escolha a cidade </Text>
+          </View>
+      
+          <FlatList 
+            showsVerticalScrollIndicator={false}
+            data={list}
+            keyExtractor={item => item?.city}
+            renderItem={ ListCity }
+            style={styles.LIST}
+          />
+      </View>
+
+    : 
+      <View style={styles.VIEW_ACTIVITY_INDICATOR}>
+        <ActivityIndicator size={60} color={'#0b0c7c'} />
+      </View>
   )
 }
