@@ -11,14 +11,13 @@ export const styles = StyleSheet.create({
   
     LIST: {alignSelf: 'center', width: '100%', marginBottom: 20, borderRadius: 10, margin: 10, paddingHorizontal: 20},
   
+    VIEW_ACTIVITY_INDICATOR: {flex: 1, alignItems: 'center', justifyContent: 'center'},
+
     TOUCHABLE_CARD: { 
       flex: 1, backgroundColor: '#fff', justifyContent: 'center', alignItems: 'flex-start', marginBottom: 20, paddingBottom: 20, padding: 10, borderRadius: 10, opacity: 20
     },
   
     VIEW_IMAGE: {width: '100%', height: 200},
-  
     TITLE: {fontSize: 25, fontWeight: 'bold'},
-  
-    VIEW_ACTIVITY_INDICATOR: {flex: 1, alignItems: 'center', justifyContent: 'center'},
   
   })

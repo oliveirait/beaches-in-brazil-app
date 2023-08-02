@@ -2,7 +2,7 @@
   "expo": {
     "name": "Praias Limpas Brasil",
     "slug": "beachesinrio",
-    "version": "2.1.5",
+    "version": "2.1.6",
     "orientation": "portrait",
     "icon": "./src/assets/icon.png",
     "userInterfaceStyle": "light",
@@ -33,7 +33,7 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.oliveirafocs.beachesinrio",
-      "versionCode": 5
+      "versionCode": 6
     },
     "web": {
       "favicon": "./src/assets/favicon.png"

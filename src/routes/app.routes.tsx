@@ -1,17 +1,21 @@
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import { Home } from "../screens/02_home";
 import { Main } from '../screens/01_main';
 
-
-const Tab = createMaterialTopTabNavigator();
 const Stack = createStackNavigator()
+const Drawer = createDrawerNavigator();
 
 
-export const AppRoutes = () => {
+export const AppStackRoutes = () => {
   return (
-    <Stack.Navigator >
+    <Stack.Navigator screenOptions={{
+      gestureDirection: 'horizontal',
+      gestureEnabled: true,
+      headerShown: false,
+      
+    }}>
 
       <Stack.Screen 
         name='main' 
@@ -27,4 +31,15 @@ export const AppRoutes = () => {
 
     </Stack.Navigator>
   )
+}
+
+
+
+export const AppDrawerRoutes = () => {
+  return (
+    <Drawer.Navigator initialRouteName='main'>
+      <Drawer.Screen name="main" component={Main} />
+      <Drawer.Screen name="home" component={Home} options={{}}/>
+    </Drawer.Navigator>
+  );
 }
