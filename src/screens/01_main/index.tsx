@@ -4,6 +4,8 @@ import { useCallback, useState } from "react"
 
 import { styles } from "./styles"
 import { base } from "../../base"
+import { checkNetwork } from "../../utils/network/checkNetwork"
+import { simpleAlert } from "../../utils/alerts/simpleAlert"
 
 interface MenuListProps {
   city: string
@@ -17,6 +19,17 @@ export const Main = () => {
   const navigation = useNavigation()
   const [list, setList] = useState<MenuListProps[]>([])
 
+  async function goPage (item: MenuListProps) {
+    const internet = await checkNetwork()
+    if (!internet) {
+      return simpleAlert({
+        title: 'Não há conexão',
+        description: 'Neste momento você está sem internet, verifique sua conexão'
+      })
+    }
+    navigation.navigate('home', { site: item?.site })
+  }
+
   useFocusEffect(
     useCallback(() => {
       setList(base)
@@ -27,9 +40,7 @@ export const Main = () => {
     return (
       <TouchableOpacity 
         style={styles.TOUCHABLE_CARD}
-        onPress={
-          () => navigation.navigate('home', { site: item?.site })
-        }
+        onPress={() => goPage(item)}
       >
         
         <View style={styles.VIEW_IMAGE} >

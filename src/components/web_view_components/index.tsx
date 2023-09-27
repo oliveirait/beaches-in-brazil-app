@@ -50,3 +50,18 @@ export function RenderErrorMobiNews (props: any) {
     </View>
   )
 }
+
+export function ActivityLoadModified () { 
+  return (
+    <View style={{position: 'absolute', bottom: 0, right: 0, left: 0, top: 0, justifyContent: 'center', marginBottom: 100, width: '100%', height: '100%'}} >
+
+      <View style={{width: 150, height: 100, alignSelf: `center`,alignItems: `center`, justifyContent: `center`, backgroundColor: '#fff', borderRadius: 20, gap: 5}}>
+        <ActivityIndicator  style={{alignItems: 'center', justifyContent: 'center'}} size={40} color={'#000'}/>
+        <Text style={{ textAlign: 'center', fontSize: 12}} >
+          Carregando...
+        </Text>
+      </View>
+
+    </View>
+  )
+}

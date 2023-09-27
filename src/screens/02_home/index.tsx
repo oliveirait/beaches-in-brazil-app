@@ -4,14 +4,18 @@ import { WebView, WebViewMessageEvent } from 'react-native-webview';
 import { MenuButton, menuList } from '../../components/button_menu';
 import { styles } from './styles';
 import * as Icon from '@expo/vector-icons'
-import { ActivityLoad, RenderError } from '../../components/web_view_components';
+import { ActivityLoad, ActivityLoadModified, RenderError } from '../../components/web_view_components';
 import { Banner } from '../../components/banner_pub_id';
+import { SuperModal } from '../../components/super_modal';
+import { WebViewProgressEvent } from 'react-native-webview/lib/WebViewTypes';
 
 
 export const Home = ({route}) => {
 
   const [search, setSearch] = React.useState('')
   const [page, setPage] = React.useState(true)
+  const [modalState, setModalState] = React.useState(true)
+ 
 
 
   const webViewRef = React.useRef(null)
@@ -22,6 +26,15 @@ export const Home = ({route}) => {
         window.find("${search}")
       `)
     } 
+  }
+
+  function loadProg (event: WebViewProgressEvent) {
+    const { progress } = event.nativeEvent
+    if (progress > 0) {
+      setTimeout(() => {
+        setModalState(false)
+      }, 1000)
+    }
   }
 
 
@@ -56,33 +69,34 @@ export const Home = ({route}) => {
  
         <WebView
           source={{uri: route.params?.site}}
-          injectedJavaScript={`
-            const html = document.querySelector(".logo")
-              if (html) {
-                window.ReactNativeWebView.postMessage('true')
-              }
 
-              else {
-                window.ReactNativeWebView.postMessage('false')
-              }
-
-          `}
           ref={webViewRef}
-          renderError={ RenderError }
+          renderLoading={ ActivityLoadModified }
+          onLoad={ActivityLoadModified}
+          onLoadProgress={loadProg}
           onMessage={(eventLoad) => {
             console.log(eventLoad.nativeEvent.data)
             setPage(eventLoad.nativeEvent.data === 'true' ? true : false)
           }}
-          
-          
-          cacheMode='LOAD_NO_CACHE'
-        />
+          cacheMode='LOAD_CACHE_ELSE_NETWORK'
+          injectedJavaScript={`
+          const html = document.querySelector(".logo")
+            if (html) {
+              window.ReactNativeWebView.postMessage('true')
+            }
+
+            else {
+              window.ReactNativeWebView.postMessage('false')
+            }
+          `}
+          />
   
     
     : <ActivityLoad />
       
   }
 
+      <SuperModal isVisible={modalState}/>
 
     {
       !__DEV__ && <Banner />

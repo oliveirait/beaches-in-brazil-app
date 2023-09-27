@@ -1,10 +1,10 @@
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import { Home } from "../screens/02_home";
 import { Main } from '../screens/01_main';
 
-const Stack = createStackNavigator()
+const Stack = createNativeStackNavigator()
 const Drawer = createDrawerNavigator();
 
 
@@ -14,7 +14,7 @@ export const AppStackRoutes = () => {
       gestureDirection: 'horizontal',
       gestureEnabled: true,
       headerShown: false,
-      
+      animation: 'fade'
     }}>
 
       <Stack.Screen 
